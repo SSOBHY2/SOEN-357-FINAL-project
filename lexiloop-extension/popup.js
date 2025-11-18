@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const fontSizeInput = document.getElementById('font-size');
 
     // --- DeepSeek API Configuration ---
-    const DEEPSEEK_API_KEY = 'sk-82c0ea79f27041378d0c9b9a9e056aee';
+    const DEEPSEEK_API_KEY = CONFIG.DEEPSEEK_API_KEY;
     const DEEPSEEK_API_URL = 'https://api.deepseek.com/chat/completions';
 
     simplifyBtn.addEventListener('click', async () => {
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify({
                     model: 'deepseek-chat',
                     messages: [
-                        { "role": "system", "content": "You are a helpful assistant that simplifies complex text for English language learners and people with dyslexia. Keep the original meaning but use simpler vocabulary and sentence structures." },
+                        { "role": "system", "content": "You are a helpful assistant that simplifies complex text for English language learners and people with dyslexia. Keep the original meaning but use simpler vocabulary and sentence structures. REPLY DIRECTLY ALWAYS WITHOUT ANY WELCOMING OR FAREWELL MESSAGES JUST THE OUTPUT DIRECTLY." },
                         { "role": "user", "content": `Simplify the following text: ${textToSimplify}` }
                     ]
                 })
