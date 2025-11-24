@@ -1,6 +1,13 @@
 /lexiloop-backend/venv
 /lexiloop-backend/.env
 /lexiloop-backend/__pycache__/
+/lexiloop-backend/app/__pycache__/
+/lexiloop-backend/app/models/__pycache__/
+/lexiloop-backend/app/services/__pycache__/
+/lexiloop-backend/app/routes/__pycache__/
+/lexiloop-backend/app/__init__.py 
+/lexiloop-backend/app/services/__init__.py
+/lexiloop-backend/app/routes/__init__.py
 
 /lexiloop-react-extension/node_modules
 /lexiloop-react-extension/dist
