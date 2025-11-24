@@ -66,3 +66,21 @@ Step 4: Simplify!
 "Failed to load extension" or "Could not load icon.png" error:
    - This means the icon file is missing.
    - Make sure a valid image file named exactly "icon.png" (all lowercase) is inside the LexiLoop folder along with all the other files.
+
+--------------------
+ HOW TO USE THE REACT VERSION
+--------------------
+
+Go to the lexiloop-react-extension folder
+
+If you want to use the web version just run npm run dev
+
+If you want to build the extension version run npm run build and then follow the same steps as above to load the unpacked extension but select the dist folder inside lexiloop-react-extension
+
+---------------------
+ BACKEND SETUP
+---------------------
+
+If you are on Linux or MacOS, navigate to the lexiloop-backend folder and run the setup.sh script, be sure to have python3 installed or you gonna run into issues
+
+If you are on windows, good luck lol
