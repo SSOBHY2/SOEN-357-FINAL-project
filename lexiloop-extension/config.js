@@ -4,6 +4,5 @@
 // For production, consider using Chrome's storage API or a build tool
 
 const CONFIG = {
-    DEEPSEEK_API_KEY: 'sk-ef7709dcbad449cfbcb17d2f7700d112'
+    BACKEND_URL: 'http://localhost:8000'
 };
-
