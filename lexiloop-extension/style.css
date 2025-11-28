@@ -2,25 +2,35 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: #f8f9fa;
     margin: 0;
-    width: 400px;
+    width: 100%;
+    font-size: 22px;
 }
 .container {
-    padding: 20px;
+    padding: 32px;
+    background-color: #ffffff;
+    border-radius: 0;
+    box-shadow: none;
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow-y: auto;
 }
 h1 {
     text-align: center;
     color: #0056b3;
     margin-top: 0;
-    margin-bottom: 20px;
-    font-size: 24px;
+    margin-bottom: 32px;
+    font-size: 40px;
 }
 textarea {
-    width: calc(100% - 20px);
-    height: 100px;
+    width: 100%;
+    height: 260px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 22px;
     resize: vertical;
 }
 .controls {
@@ -34,26 +44,30 @@ textarea {
 }
 .controls label {
     font-weight: bold;
-    font-size: 14px;
+    font-size: 22px;
 }
 .controls select, .controls input[type="number"] {
     padding: 5px;
     border-radius: 4px;
     border: 1px solid #ccc;
     margin-left: 5px;
+    font-size: 22px;
 }
 .button-container {
     text-align: center;
-    margin: 15px 0;
+    margin: 18px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 button {
     background-color: #007bff;
     color: white;
-    padding: 10px 20px;
+    padding: 16px 28px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 24px;
     width: 100%;
     transition: background-color 0.3s;
 }
@@ -64,16 +78,48 @@ button:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
 }
+#loadPdfBtn, #ttsBtn {
+    background-color: #ffffff;
+    color: #0056b3;
+    border: 1px solid #0056b3;
+}
+#loadPdfBtn:hover, #ttsBtn:hover {
+    background-color: #e9f2ff;
+}
 .output-container {
     border: 1px solid #ccc;
     background-color: #fff;
     padding: 15px;
     border-radius: 4px;
-    min-height: 150px;
-    line-height: 1.7;
+    min-height: 260px;
+    line-height: 2.0;
     white-space: pre-wrap;
-    font-size: 16px;
+    font-size: 24px;
+}
+.focus-line {
+    display: block;
+    padding: 2px 0;
+}
+.focus-line.focused {
+    background-color: #fff3cd;
 }
 .loader {
     text-align: center;
+}
+.pdf-upload {
+    margin: 10px 0;
+    font-size: 20px;
+}
+.pdf-upload label {
+    font-weight: bold;
+    margin-right: 6px;
+    font-size: 22px;
+}
+.pdf-upload input[type="file"] {
+    font-size: 20px;
+}
+#pdfStatus {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #555;
 }

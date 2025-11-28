@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "LexiLoop",
+  "version": "1.0",
+  "description": "Simplifies complex text to improve reading comprehension for ESL and dyslexic students.",
+  "icons": {
+    "48": "icon.png"
+  },
+  "action": {
+    "default_icon": "icon.png",
+    "default_title": "Open LexiLoop"
+  },
+  "side_panel": {
+    "default_path": "index.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "sidePanel",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://api.deepseek.com/"
+  ]
+}
