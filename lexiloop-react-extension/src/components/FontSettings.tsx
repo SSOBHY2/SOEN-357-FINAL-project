@@ -11,9 +11,7 @@ interface FontSettingsProps {
 
 const fontOptions = [
   { value: "Arial, sans-serif", label: "Arial" },
-  { value: "Verdana, sans-serif", label: "Verdana" },
   { value: "'Georgia', serif", label: "Georgia" },
-  { value: "'OpenDyslexic', sans-serif", label: "OpenDyslexic" }
 ];
 
 export function FontSettings({

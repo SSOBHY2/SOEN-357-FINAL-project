@@ -41,6 +41,7 @@ export function PdfUploadZone({
       <input
         ref={fileInputRef}
         accept=".pdf"
+        type="file"
         onChange={onUpload}
         className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
         disabled={loading}

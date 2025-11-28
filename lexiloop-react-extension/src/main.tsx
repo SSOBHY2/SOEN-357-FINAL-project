@@ -9,18 +9,17 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ToastProvider>
       <div
-      className="w-[400px] h-[600px] relative animate-gradient"
-      style={{
-        background: "linear-gradient(315deg, rgba(102, 3, 95, 1) 3%, rgba(165, 60, 206, 1) 38%, rgba(194, 101, 238, 1) 68%, rgba(255,25,25,1) 98%)",
-        backgroundSize: "400% 400%",
-        zIndex: 0
-      }}
-    >
-        <div className="h-full overflow-y-auto">
+        className="fixed inset-0 animate-gradient"
+        style={{
+          background: "linear-gradient(315deg, rgba(102, 3, 95, 1) 3%, rgba(165, 60, 206, 1) 38%, rgba(194, 101, 238, 1) 68%, rgba(255,25,25,1) 98%)",
+          backgroundSize: "400% 400%",
+        }}
+      >
+        <div className="h-full w-full overflow-y-auto overflow-x-hidden">
           <App />
         </div>
-       <ToastContainer />
-    </div>
+        <ToastContainer />
+      </div>
     </ToastProvider>
   </StrictMode>,
 )
