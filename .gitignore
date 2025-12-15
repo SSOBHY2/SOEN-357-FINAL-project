@@ -1,4 +1,5 @@
 /lexiloop-backend/venv
+/lexiloop-backend/.venv
 /lexiloop-backend/.env
 /lexiloop-backend/__pycache__/
 /lexiloop-backend/app/__pycache__/
