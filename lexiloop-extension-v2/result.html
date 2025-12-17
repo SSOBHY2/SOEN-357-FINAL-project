@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LexiLoop - Simplified Result</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .header-text h1 {
+            font-size: 18px;
+            color: white;
+        }
+
+        .header-text p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .content {
+            padding: 24px;
+        }
+
+        /* Accessibility Controls */
+        .accessibility-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #eee;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .font-size-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .font-size-control label {
+            font-size: 12px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .font-size-btn {
+            width: 28px;
+            height: 28px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            color: #667eea;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .font-size-btn:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .font-size-btn:focus {
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+        }
+
+        .font-size-indicator {
+            font-size: 12px;
+            color: #333;
+            min-width: 24px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .tts-btn {
+            padding: 8px 14px;
+            border: 1px solid #667eea;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            color: #667eea;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tts-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .tts-btn:focus {
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+        }
+
+        .tts-btn.speaking {
+            background: #f44336;
+            border-color: #f44336;
+            color: white;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .original-label {
+            color: #666;
+        }
+
+        .simplified-label {
+            color: #2e7d32;
+        }
+
+        .text-box {
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.7;
+            max-height: 150px;
+            overflow-y: auto;
+            transition: font-size 0.2s ease;
+        }
+
+        /* Font size classes */
+        .text-box.font-small {
+            font-size: 12px;
+        }
+
+        .text-box.font-medium {
+            font-size: 14px;
+        }
+
+        .text-box.font-large {
+            font-size: 18px;
+        }
+
+        .text-box.font-xlarge {
+            font-size: 22px;
+        }
+
+        .original-box {
+            background: #f5f5f5;
+            border-left: 4px solid #667eea;
+            color: #555;
+        }
+
+        .simplified-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-left: 4px solid #4caf50;
+            color: #333;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-width: 120px;
+        }
+
+        .btn:focus {
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .success-msg {
+            text-align: center;
+            padding: 12px;
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-radius: 8px;
+            margin-top: 16px;
+            display: none;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .success-msg.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f0f0f0;
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Screen reader only class */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Dark Mode Toggle Button */
+        .theme-toggle {
+            padding: 8px 14px;
+            border: 1px solid #667eea;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            color: #667eea;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .theme-toggle:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .theme-toggle:focus {
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        body.dark-mode .container {
+            background: #1e1e2e;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        body.dark-mode .accessibility-controls {
+            background: #2a2a3e;
+            border-bottom-color: #3a3a4e;
+        }
+
+        body.dark-mode .font-size-control label {
+            color: #aaa;
+        }
+
+        body.dark-mode .font-size-btn {
+            background: #2a2a3e;
+            border-color: #667eea;
+            color: #a0b0ff;
+        }
+
+        body.dark-mode .font-size-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        body.dark-mode .font-size-indicator {
+            color: #ddd;
+        }
+
+        body.dark-mode .tts-btn,
+        body.dark-mode .theme-toggle {
+            background: #2a2a3e;
+            border-color: #667eea;
+            color: #a0b0ff;
+        }
+
+        body.dark-mode .tts-btn:hover,
+        body.dark-mode .theme-toggle:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        body.dark-mode .content {
+            background: #1e1e2e;
+        }
+
+        body.dark-mode .section-label.original-label {
+            color: #aaa;
+        }
+
+        body.dark-mode .section-label.simplified-label {
+            color: #66bb6a;
+        }
+
+        body.dark-mode .text-box.original-box {
+            background: #2a2a3e;
+            border-left-color: #667eea;
+            color: #ccc;
+        }
+
+        body.dark-mode .text-box.simplified-box {
+            background: linear-gradient(135deg, #1b3a2f 0%, #2a4a3f 100%);
+            border-left-color: #66bb6a;
+            color: #ddd;
+        }
+
+        body.dark-mode .actions {
+            background: #2a2a3e;
+            border-top-color: #3a3a4e;
+        }
+
+        body.dark-mode .btn-secondary {
+            background: #3a3a4e;
+            color: #ddd;
+        }
+
+        body.dark-mode .btn-secondary:hover {
+            background: #4a4a5e;
+        }
+
+        body.dark-mode .success-msg {
+            background: #1b3a2f;
+            color: #66bb6a;
+        }
+
+        body.dark-mode .loading {
+            color: #aaa;
+        }
+
+        body.dark-mode .spinner {
+            border-color: #3a3a4e;
+            border-top-color: #667eea;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" role="main" aria-labelledby="main-heading">
+        <header class="header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <div class="logo-icon" aria-hidden="true">L</div>
+            <div class="header-text">
+                <h1 id="main-heading">LexiLoop</h1>
+                <p>Text Simplified Successfully</p>
+            </div>
+        </header>
+
+        <!-- Accessibility Controls -->
+        <div class="accessibility-controls" role="toolbar" aria-label="Accessibility options">
+            <div class="font-size-control" role="group" aria-label="Font size adjustment">
+                <label id="font-label">Font Size:</label>
+                <button class="font-size-btn" id="fontDecrease" aria-label="Decrease font size" tabindex="0">A-</button>
+                <span class="font-size-indicator" id="fontIndicator" aria-live="polite">M</span>
+                <button class="font-size-btn" id="fontIncrease" aria-label="Increase font size" tabindex="0">A+</button>
+            </div>
+            <div style="display: flex; gap: 8px;">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" tabindex="0">
+                    <span id="themeIcon" aria-hidden="true">🌙</span> <span id="themeLabel">Dark</span>
+                </button>
+                <button class="tts-btn" id="ttsBtn" aria-label="Read simplified text aloud" tabindex="0">
+                    <span aria-hidden="true">🔊</span> Read
+                </button>
+            </div>
+        </div>
+
+        <div class="content" id="content">
+            <div class="loading" id="loading" role="status" aria-live="polite">
+                <div class="spinner" aria-hidden="true"></div>
+                <p>Loading result...</p>
+            </div>
+
+            <div id="result" style="display: none;">
+                <section class="section" aria-labelledby="original-heading">
+                    <h2 class="section-label original-label" id="original-heading">Original Text</h2>
+                    <div class="text-box original-box font-medium" id="originalText" role="article" tabindex="0"></div>
+                </section>
+
+                <section class="section" aria-labelledby="simplified-heading">
+                    <h2 class="section-label simplified-label" id="simplified-heading">✓ Simplified Text</h2>
+                    <div class="text-box simplified-box font-medium" id="simplifiedText" role="article" tabindex="0"
+                        aria-live="polite"></div>
+                </section>
+
+                <div class="actions" role="group" aria-label="Actions">
+                    <button class="btn btn-secondary" id="closeBtn" tabindex="0">Close</button>
+                    <button class="btn btn-primary" id="copyBtn" tabindex="0">📋 Copy Simplified</button>
+                </div>
+
+                <div class="success-msg" id="successMsg" role="status" aria-live="polite">✓ Copied to clipboard!</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="result.js"></script>
+</body>
+
+</html>
